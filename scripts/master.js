@@ -95,7 +95,7 @@ $(document).ready(function() {
 
       var data = new FormData();
       data.append("data", "9bc8f225ca512656b771145ec31c35d0");
-      var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+      var xhr = new XMLHttpRequest();
       xhr.open('post', 'pending.php', true);
       xhr.send(data);
     });
