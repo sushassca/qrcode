@@ -9,8 +9,9 @@ $(document).ready(function() {
       var constraints = {
         audio: false,
         video: {
-          width: 1280,
-          height: 720
+          facingMode: {
+            exact: "environment"
+          }
         }
       };
       // Not adding `{ audio: true }` since we only want video now
