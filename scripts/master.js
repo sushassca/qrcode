@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       var video = document.getElementById('preview');
-      var front = false;
+      var front = true;
       var constraints = {
         video: {
           facingMode: (front ? "user" : "environment")
