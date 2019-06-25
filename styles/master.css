@@ -99,3 +99,8 @@ td {
   left: calc(50% - 250px);
   border: 1px solid;
 }
+
+
+.scan{
+  border: 1px solid red;
+}
