@@ -4,27 +4,7 @@ $(document).ready(function() {
     $("#mobile").show();
     $("#web").hide();
 
-    const constraints: {facingMode: { exact: 'environment' }}
 
-    const video = document.querySelector('video');
-
-    navigator.mediaDevices.getUserMedia(constraints).
-      then((stream) => {video.srcObject = stream});
-
-    let scanner = new Instascan.Scanner({
-      video: document.getElementById('preview')
-    });
-    scanner.addListener('scan', function(content) {
-      alert('Escaneou o conteudo: ' + content);
-      window.open(content, "_blank");
-    });
-    Instascan.Camera.getCameras().then(cameras => {
-      if (cameras.length > 0) {
-        //  scanner.start(cameras[0]);
-      } else {
-        alert("Não existe câmera no dispositivo!");
-      }
-    });
 
 
   } else {

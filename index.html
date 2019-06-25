@@ -3,13 +3,12 @@
 
 <head>
 	<title>Demo page</title>
-
-</head>
-
-
-<body>
 	<link rel="stylesheet" href="styles/master.css">
+	<script src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/scanner/instascan.min.js"></script>
+</head>
+<body>
+
 	<!-- ################################# -->
 	<!-- ############## WEB ############## -->
 	<!-- ################################# -->
@@ -36,10 +35,24 @@
 	<!-- ############# MOBILE ############ -->
 	<!-- ################################# -->
 	<div id="mobile">
-		<video autoplay id="preview"></video>
+		<video id="preview"></video>
 	</div>
+	<script type="text/javascript">
+		let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+		scanner.addListener('scan', function (content) {
+			alert(content);
+		});
+		Instascan.Camera.getCameras().then(function (cameras) {
+			if (cameras.length > 0) {
+				scanner.start(cameras[0]);
+			} else {
+				console.error('No cameras found.');
+			}
+		}).catch(function (e) {
+			console.error(e);
+		});
+	</script>
 
-	<script src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.qrcode.js"></script>
 	<script src="scripts//CryptoJS.js" charset="utf-8"></script>
 	<script type="text/javascript" src="scripts/master.js"></script>
