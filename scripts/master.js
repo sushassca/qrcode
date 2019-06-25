@@ -3,22 +3,6 @@ $(document).ready(function() {
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     $("#mobile").show();
     $("#web").hide();
-
-    let scanner = new Instascan.Scanner(opts);
-
-    scanner.addListener('scan', function(content) {
-      alert(content);
-    });
-    Instascan.Camera.getCameras().then(function(cameras) {
-      if (cameras.length > 0) {
-        scanner.start(cameras[1]);
-      } else {
-        console.error('No cameras found.');
-      }
-    }).catch(function(e) {
-      console.error(e);
-    });
-
     let opts = {
       // Whether to scan continuously for QR codes. If false, use scanner.scan() to manually scan.
       // If true, the scanner emits the "scan" event when a QR code is scanned. Default true.
@@ -50,6 +34,22 @@ $(document).ready(function() {
       // increases CPU usage but makes scan response faster. Default 1 (i.e. analyze every frame).
       scanPeriod: 1
     };
+    let scanner = new Instascan.Scanner(opts);
+
+    scanner.addListener('scan', function(content) {
+      alert(content);
+    });
+    Instascan.Camera.getCameras().then(function(cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[1]);
+      } else {
+        console.error('No cameras found.');
+      }
+    }).catch(function(e) {
+      console.error(e);
+    });
+
+
 
 
   } else {
