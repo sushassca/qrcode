@@ -8,7 +8,19 @@ $(document).ready(function() {
       var video = document.getElementById('preview');
       var constraints = {
         video: {
-          facingMode: ("environment")
+          width: {
+            min: 1280,
+            ideal: 1920,
+            max: 2560,
+          },
+          height: {
+            min: 720,
+            ideal: 1080,
+            max: 1440
+          },
+          facingMode: {
+            exact: 'environment'
+          }
         }
       };
       // Not adding `{ audio: true }` since we only want video now
@@ -30,7 +42,7 @@ $(document).ready(function() {
     });
     Instascan.Camera.getCameras().then(cameras => {
       if (cameras.length > 0) {
-      //  scanner.start(cameras[0]);
+        //  scanner.start(cameras[0]);
       } else {
         alert("Não existe câmera no dispositivo!");
       }
