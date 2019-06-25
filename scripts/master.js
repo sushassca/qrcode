@@ -15,7 +15,7 @@ $(document).ready(function() {
          console.error('No cameras found.');
        }
      }).catch(function (e) {
-       console.error(e);
+       alert(e);
      });
 
 
