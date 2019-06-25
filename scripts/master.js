@@ -8,7 +8,7 @@ $(document).ready(function() {
       video: true
     };
 
-    const video = document.querySelector('video');
+    const video = document.querySelector('preview');
 
     navigator.mediaDevices.getUserMedia(constraints).
       then((stream) => {video.srcObject = stream});
