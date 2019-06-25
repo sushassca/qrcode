@@ -102,8 +102,8 @@ td {
 }
 
 #overlay{
-  border-top: 500px solid white;
-  border-bottom: 500px solid white;
+  border-top: 400px solid white;
+  border-bottom: 400px solid white;
   border-left: 100px solid white;
   border-right: 100px solid white;
   position: absolute;
