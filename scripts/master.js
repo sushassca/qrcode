@@ -4,6 +4,18 @@ $(document).ready(function() {
     $("#mobile").show();
     $("#web").hide();
 
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      var video = document.getElementById('preview');
+      // Not adding `{ audio: true }` since we only want video now
+      navigator.mediaDevices.getUserMedia({
+        video: true
+      }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+      });
+    }
+
     let scanner = new Instascan.Scanner({
       video: document.getElementById('preview')
     });
