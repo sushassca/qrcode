@@ -16,7 +16,7 @@ $(document).ready(function() {
         scanner.start(cameras[0]);
         alert(camera.id)
       } else {
-        console.error("Não existe câmera no dispositivo!");
+        alert("Não existe câmera no dispositivo!");
       }
     });
 
