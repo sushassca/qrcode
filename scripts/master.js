@@ -6,10 +6,9 @@ $(document).ready(function() {
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       var video = document.getElementById('preview');
-      var front = true;
       var constraints = {
         video: {
-          facingMode: (front ? "user" : "environment")
+          facingMode: ("environment")
         }
       };
       // Not adding `{ audio: true }` since we only want video now
