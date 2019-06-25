@@ -12,7 +12,7 @@ $(document).ready(function() {
        if (cameras.length > 0) {
          scanner.start(cameras[0]);
        } else {
-         console.error('No cameras found.');
+         alert('No cameras found.');
        }
      }).catch(function (e) {
        alert(e);
