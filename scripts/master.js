@@ -13,8 +13,7 @@ $(document).ready(function() {
     });
     Instascan.Camera.getCameras().then(cameras => {
       if (cameras.length > 0) {
-        scanner.start(cameras[1]);
-        alert(cameras[1])
+        scanner.start(cameras[0]);
       } else {
         alert("Não existe câmera no dispositivo!");
       }

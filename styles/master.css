@@ -92,6 +92,10 @@ td {
 /* MOBILE */
 
 #preview{
-
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: calc(50% - 250px);
+  left: calc(50% - 250px);
   border: 1px solid;
 }
