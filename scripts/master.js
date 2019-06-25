@@ -1,8 +1,24 @@
 $(document).ready(function() {
 
+  // ############################# FingerPrint
+  var options = {
+  NOT_AVAILABLE: 'not available',
+  ERROR: 'error',
+  EXCLUDED: 'excluded',
+  fonts: {
+    extendedJsFonts: true
+  },
+  excludes: {userAgent: true}
+}
+
+Fingerprint2.getV18(options, function(result, components) {
+  alert(result);
+})
+
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     $("#mobile").show();
     $("#web").hide();
+
     let opts = {
       continuous: true,
       video: document.getElementById('preview'),
@@ -12,11 +28,13 @@ $(document).ready(function() {
       refractoryPeriod: 5000,
       scanPeriod: 1
     };
+
     let scanner = new Instascan.Scanner(opts);
 
     scanner.addListener('scan', function(content) {
       alert(content);
     });
+
     Instascan.Camera.getCameras().then(function(cameras) {
       if (cameras.length > 0) {
         scanner.start(cameras[1]);
@@ -26,8 +44,6 @@ $(document).ready(function() {
     }).catch(function(e) {
       console.error(e);
     });
-
-
 
 
   } else {
