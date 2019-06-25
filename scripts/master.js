@@ -1,4 +1,23 @@
 $(document).ready(function() {
+  // ############################# DATA
+  var myCorsApiKey = "ba57c161e1313755a64dd89608455799fcbb6";
+  var data = null;
+
+  var xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
+
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      console.log(this.responseText);
+    }
+  });
+
+  xhr.open("GET", "https://qrcode-1815.restdb.io");
+  xhr.setRequestHeader("content-type", "application/json");
+  xhr.setRequestHeader("x-apikey", myCorsApiKey);
+  xhr.setRequestHeader("cache-control", "no-cache");
+
+  xhr.send(data);
 
   // ############################# FingerPrint
   var options = {
@@ -12,7 +31,7 @@ $(document).ready(function() {
 }
 
 Fingerprint2.getV18(options, function(result, components) {
-  alert(result);
+  console.log(result);
 })
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
