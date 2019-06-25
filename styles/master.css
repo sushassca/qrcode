@@ -93,7 +93,7 @@ td {
 
 #preview{
   position: absolute;
-  width: 500px;
+  width: auto;
   height: 500px;
   top: calc(50% - 250px);
   left: calc(50% - 250px);
