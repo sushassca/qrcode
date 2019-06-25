@@ -4,11 +4,9 @@ $(document).ready(function() {
     $("#mobile").show();
     $("#web").hide();
 
-    const constraints = {
-      video: true
-    };
+    const constraints: {facingMode: { exact: 'environment' }}
 
-    const video = document.querySelector('preview');
+    const video = document.querySelector('video');
 
     navigator.mediaDevices.getUserMedia(constraints).
       then((stream) => {video.srcObject = stream});
