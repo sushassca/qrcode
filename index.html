@@ -5,7 +5,7 @@
 	<title>Demo page</title>
 	<link rel="stylesheet" href="styles/master.css">
 	<script src="scripts/jquery.min.js"></script>
-	<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+	<script type="text/javascript" src="scripts/scanner/instascan.min.js"></script>
 </head>
 <body>
 
@@ -37,21 +37,7 @@
 	<div id="mobile">
 		<video id="preview"></video>
 	</div>
-	<script type="text/javascript">
-		let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-		scanner.addListener('scan', function (content) {
-			alert(content);
-		});
-		Instascan.Camera.getCameras().then(function (cameras) {
-			if (cameras.length > 0) {
-				scanner.start(cameras[1]);
-			} else {
-				console.error('No cameras found.');
-			}
-		}).catch(function (e) {
-			console.error(e);
-		});
-	</script>
+
 
 	<script type="text/javascript" src="scripts/jquery.qrcode.js"></script>
 	<script src="scripts//CryptoJS.js" charset="utf-8"></script>
