@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // ############################# DATA
-  var myCorsApiKey = "ba57c161e1313755a64dd89608455799fcbb6";
+  var myCorsApiKey = "5d1216fa82ef885d6e621c55";
   var data = null;
 
   var xhr = new XMLHttpRequest();
@@ -18,6 +18,7 @@ $(document).ready(function() {
   xhr.setRequestHeader("cache-control", "no-cache");
 
   xhr.send(data);
+
 
   // ############################# FingerPrint
   var options = {
