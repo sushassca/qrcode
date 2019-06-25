@@ -6,21 +6,21 @@ $(document).ready(function() {
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       var video = document.getElementById('preview');
-      // Not adding `{ audio: true }` since we only want video now
-      navigator.mediaDevices.getUserMedia({
-
+      var constraints = {
         audio: false,
         video: {
-          facingMode: {
-            exact: "environment"
-          }
+          width: 1280,
+          height: 720
         }
-
-      }).then(function(stream) {
-        //video.src = window.URL.createObjectURL(stream);
-        video.srcObject = stream;
-        video.play();
-      });
+      };
+      // Not adding `{ audio: true }` since we only want video now
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(function(mediaStream) {
+          video.srcObject = mediaStream;
+          video.onloadedmetadata = function(e) {
+            video.play();
+          };
+        })
     }
 
     let scanner = new Instascan.Scanner({
