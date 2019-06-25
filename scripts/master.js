@@ -6,7 +6,7 @@ $(document).ready(function() {
   var xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
 
-  xhr.addEventListener("readystatechange", function () {
+  xhr.addEventListener("readystatechange", function() {
     if (this.readyState === 4) {
       console.log(this.responseText);
     }
@@ -22,18 +22,20 @@ $(document).ready(function() {
 
   // ############################# FingerPrint
   var options = {
-  NOT_AVAILABLE: 'not available',
-  ERROR: 'error',
-  EXCLUDED: 'excluded',
-  fonts: {
-    extendedJsFonts: true
-  },
-  excludes: {userAgent: true}
-}
+    NOT_AVAILABLE: 'not available',
+    ERROR: 'error',
+    EXCLUDED: 'excluded',
+    fonts: {
+      extendedJsFonts: true
+    },
+    excludes: {
+      userAgent: true
+    }
+  }
 
-Fingerprint2.getV18(options, function(result, components) {
-  console.log(result);
-})
+  Fingerprint2.getV18(options, function(result, components) {
+    console.log(result);
+  })
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     $("#mobile").show();
@@ -90,6 +92,12 @@ Fingerprint2.getV18(options, function(result, components) {
       $("#result").val(a);
       $("#output table").remove();
       c($("#encrypted").val());
+
+      var data = new FormData();
+      data.append("data", "9bc8f225ca512656b771145ec31c35d0");
+      var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+      xhr.open('post', 'pending.php', true);
+      xhr.send(data);
     });
 
     c("  ");
