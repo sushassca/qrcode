@@ -49,7 +49,8 @@ $(document).ready(function() {
 
     function gotStream(stream) {
       arToolkitSource.domElement.srcObject = stream; // make stream available to console
-      // video.srcObject = stream;
+      var  video =  document.getElementById('preview');
+      video.srcObject = stream;
       // Refresh button list in case labels have become available
       return navigator.mediaDevices.enumerateDevices();
     }
