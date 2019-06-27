@@ -27,7 +27,7 @@ $(document).ready(function() {
     req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
     req.send();
   }
-  var myRequest = setInterval(myRequest, 10000);
+  var myRequest = setInterval(myRequest, 5000);
 
 
   function update(number) {
