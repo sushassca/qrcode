@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  // ############################# FingerPrint
   var options = {
     NOT_AVAILABLE: 'not available',
     ERROR: 'error',
@@ -11,6 +10,7 @@ $(document).ready(function() {
       userAgent: true
     }
   }
+  // ############################# FingerPrint
   Fingerprint2.getV18(options, function(result, components) {
     $("#myid").text(result);
 
@@ -20,7 +20,7 @@ $(document).ready(function() {
     update(0);
     // ############################# GET data from api to check if has been updated every 5s
     let req = new XMLHttpRequest();
-
+    var mydeviceidAPI = "";
     function myRequest() {
       req.onreadystatechange = () => {
         if (req.readyState == XMLHttpRequest.DONE) {
@@ -35,6 +35,7 @@ $(document).ready(function() {
             clearInterval(myRequest);
           } else {
             console.log(data.request_status);
+            mydeviceidAPI = data.request_deviceID;
           }
 
         }
@@ -78,7 +79,7 @@ $(document).ready(function() {
 
         a = CryptoJS.AES.decrypt(content, result);
         a = a.toString(CryptoJS.enc.Utf8);
-        if (result === "ceb6779475f1e6247ea59b6f2de1acb3") {
+        if (result === mydeviceidAPI) {
           update(1);
           alert("DONE");
         } else {
