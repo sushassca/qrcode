@@ -15,7 +15,7 @@ $(document).ready(function() {
     $("#myid").text(result);
 
     // ############################# Generic API URL
-    url = "https://api.jsonbin.io/b/5d14d378138da8111827f9c7/"
+    url = "https://www.jsonstore.io/92995f0b27342cdc1f6be60f928bedb6d776905c17b995f06527de722cedcca5"
     // ############################# Set Request to 0
     update(0);
     // ############################# GET data from api to check if has been updated every 5s
@@ -26,22 +26,22 @@ $(document).ready(function() {
       req.onreadystatechange = () => {
         if (req.readyState == XMLHttpRequest.DONE) {
           let data = JSON.parse(req.responseText);
-          if (data.request_status == 1) {
+          if (data.result.request_status == 1) {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-alert(data.request_deviceID)
-              mydeviceidAPI = data.request_deviceID;
+              alert(data.result.request_deviceID)
+              mydeviceidAPI = data.result.request_deviceID;
             } else {
               alert("DONE");
             };
             clearInterval(myRequest);
           } else {
-            console.log(data.request_status);
+            console.log(data.result.request_status);
 
           }
 
         }
       };
-      req.open("GET", url + "latest", true);
+      req.open("GET", url, true);
       req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
       req.send();
     }
@@ -53,7 +53,7 @@ alert(data.request_deviceID)
       req.open("PUT", url, true);
       req.setRequestHeader("Content-type", "application/json");
       req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
-      req.send('{"request_status": "' + number + '"}');
+      req.send('{"request_id": 0,"request_type": "o nome da acao","request_webID": "9bc8f225ca512656b771145ec31c35d0","request_deviceID": "ceb6779475f1e6247ea59b6f2de1acb3","request_qrcode": "U2FsdGVkX18kNHtcMiAtbzuy8kBrzIP","request_status": "' + number + '"}');
     }
 
 
