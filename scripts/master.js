@@ -1,5 +1,27 @@
 $(document).ready(function() {
   // ############################# DATA
+  let req = new XMLHttpRequest();
+
+  function myRequest() {
+    req.onreadystatechange = () => {
+      if (req.readyState == XMLHttpRequest.DONE) {
+        let data = JSON.parse(req.responseText);
+        if (data.request_status === 1) {
+          alert("DONE");
+          clearInterval(myRequest);
+        } else {
+          console.log(data.request_status);
+        }
+
+      }
+    };
+    req.open("GET", "https://api.jsonbin.io/b/5d14bd62138da8111827ebc8/1", true);
+    req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
+    req.send();
+  }
+  var myRequest = setInterval(myRequest, 5000);
+
+
 
   // ############################# FingerPrint
   var options = {
@@ -13,7 +35,7 @@ $(document).ready(function() {
       userAgent: true
     }
   }
-var mydevice = "";
+  var mydevice = "";
   Fingerprint2.getV18(options, function(result, components) {
     mydevice = result;
   })
@@ -37,7 +59,21 @@ var mydevice = "";
     scanner.addListener('scan', function(content) {
       a = CryptoJS.AES.decrypt(content, "967b81c170f10afbb56a80f7bb9ac1a8");
       a = a.toString(CryptoJS.enc.Utf8);
-      alert(a);
+      alert(a)
+
+      if (a != "") {
+        let req = new XMLHttpRequest();
+
+        req.onreadystatechange = () => {
+          if (req.readyState == XMLHttpRequest.DONE) {
+            console.log(req.responseText);
+          }
+        };
+
+        req.open("PUT", "https://api.jsonbin.io/b/5d14bd62138da8111827ebc8/1", true);
+        req.setRequestHeader("Content-type", "application/json");
+        req.send('{"request_status": "1"}');
+      }
     });
 
     Instascan.Camera.getCameras().then(function(cameras) {
@@ -75,12 +111,6 @@ var mydevice = "";
       $("#result").val(a);
       $("#output table").remove();
       c($("#encrypted").val());
-
-      var data = new FormData();
-      data.append("data", "9bc8f225ca512656b771145ec31c35d0");
-      var xhr = new XMLHttpRequest();
-      xhr.open('post', 'pending.php', true);
-      xhr.send(data);
     });
 
     c("U2FsdGVkX1/tByg8GATeVki/fdGWXQfalY+5onNil0U=");
