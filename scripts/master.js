@@ -1,51 +1,4 @@
 $(document).ready(function() {
-  // ############################# DATA
-
-  url = "https://api.jsonbin.io/b/5d14d378138da8111827f9c7/"
-  update(0);
-  let req = new XMLHttpRequest();
-
-  function myRequest() {
-    req.onreadystatechange = () => {
-      if (req.readyState == XMLHttpRequest.DONE) {
-        let data = JSON.parse(req.responseText);
-        if (data.request_status == 1) {
-          if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-
-
-          }else {
-              alert("DONE");
-          };
-          clearInterval(myRequest);
-        } else {
-          console.log(data.request_status);
-        }
-
-      }
-    };
-    req.open("GET", url+"latest", true);
-    req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
-    req.send();
-  }
-  var myRequest = setInterval(myRequest, 5000);
-
-
-  function update(number) {
-    let req = new XMLHttpRequest();
-
-    req.onreadystatechange = () => {
-      if (req.readyState == XMLHttpRequest.DONE) {
-        //alert(req.responseText);
-      }
-    };
-
-    req.open("PUT", url, true);
-    req.setRequestHeader("Content-type", "application/json");
-    req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
-    req.send('{"request_status": "' + number + '"}');
-  }
-
-
   // ############################# FingerPrint
   var options = {
     NOT_AVAILABLE: 'not available',
@@ -58,77 +11,110 @@ $(document).ready(function() {
       userAgent: true
     }
   }
-  var mydevice = "";
   Fingerprint2.getV18(options, function(result, components) {
     $("#myid").text(result);
-  })
 
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    $("#mobile").show();
-    $("#web").hide();
+    // ############################# Generic API URL
+    url = "https://api.jsonbin.io/b/5d14d378138da8111827f9c7/"
+    // ############################# Set Request to 0
+    update(0);
+    // ############################# GET data from api to check if has been updated every 5s
+    let req = new XMLHttpRequest();
 
-    let opts = {
-      continuous: true,
-      video: document.getElementById('preview'),
-      mirror: false,
-      captureImage: false,
-      backgroundScan: true,
-      refractoryPeriod: 5000,
-      scanPeriod: 1
-    };
-
-    let scanner = new Instascan.Scanner(opts);
-
-    scanner.addListener('scan', function(content) {
-      a = CryptoJS.AES.decrypt(content, "967b81c170f10afbb56a80f7bb9ac1a8");
-      a = a.toString(CryptoJS.enc.Utf8);
+    function myRequest() {
+      req.onreadystatechange = () => {
+        if (req.readyState == XMLHttpRequest.DONE) {
+          let data = JSON.parse(req.responseText);
+          if (data.request_status == 1) {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
 
-      if (a != "") {
-        update(1);
-        alert("DONE");
-      } else {
-        alert("This Qrcode doesnt belong to this DeviceID")
-      }
-    });
+            } else {
+              alert("DONE");
+            };
+            clearInterval(myRequest);
+          } else {
+            console.log(data.request_status);
+          }
 
-    Instascan.Camera.getCameras().then(function(cameras) {
-      if (cameras.length > 0) {
-        scanner.start(cameras[1]);
-      } else {
-        console.error('No cameras found.');
-      }
-    }).catch(function(e) {
-      console.error(e);
-    });
+        }
+      };
+      req.open("GET", url + "latest", true);
+      req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
+      req.send();
+    }
+    var myRequest = setInterval(myRequest, 5000);
 
-
-  } else {
-    $("#web").show();
-    $("#mobile").hide();
-
-    function c(b) {
-      jQuery(function() {
-        jQuery("#output").qrcode({
-          render: "table",
-          text: b
-        });
-      });
+    // ############################# Update function to update on API
+    function update(number) {
+      let req = new XMLHttpRequest();
+      req.open("PUT", url, true);
+      req.setRequestHeader("Content-type", "application/json");
+      req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
+      req.send('{"request_status": "' + number + '"}');
     }
 
-    $("div.lis").bind("input", function() {
-      var b = $("#value").val(),
-        a = $("#pass").val();
-      b = CryptoJS.AES.encrypt(b, a);
-      $("#encrypted").val(b);
-      a = CryptoJS.AES.decrypt(b, a);
-      $("#decrypted").val(a);
-      a = a.toString(CryptoJS.enc.Utf8);
-      $("#result").val(a);
-      $("#output table").remove();
-      c($("#encrypted").val());
-    });
 
-    c("U2FsdGVkX1/tByg8GATeVki/fdGWXQfalY+5onNil0U=");
-  }
+
+
+    // ############################# Check if is mobile or web
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      $("#mobile").show();
+      $("#web").hide();
+
+      let scanner = new Instascan.Scanner(opts);
+
+      scanner.addListener('scan', function(content) {
+
+        // ############################# decrypt with fingerprint
+        a = CryptoJS.AES.decrypt(content, result);
+        a = a.toString(CryptoJS.enc.Utf8);
+        if (a != "") {
+          update(1);
+          alert("DONE");
+        } else {
+          alert("This Qrcode doesnt belong to this DeviceID")
+        }
+      });
+
+      Instascan.Camera.getCameras().then(function(cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[1]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function(e) {
+        console.error(e);
+      });
+
+
+    } else {
+      $("#web").show();
+      $("#mobile").hide();
+
+      function c(b) {
+        jQuery(function() {
+          jQuery("#output").qrcode({
+            render: "table",
+            text: b
+          });
+        });
+      }
+
+      $("div.lis").bind("input", function() {
+        var b = $("#value").val(),
+          a = $("#pass").val();
+        b = CryptoJS.AES.encrypt(b, a);
+        $("#encrypted").val(b);
+        a = CryptoJS.AES.decrypt(b, a);
+        $("#decrypted").val(a);
+        a = a.toString(CryptoJS.enc.Utf8);
+        $("#result").val(a);
+        $("#output table").remove();
+        c($("#encrypted").val());
+      });
+
+      c("U2FsdGVkX1/tByg8GATeVki/fdGWXQfalY+5onNil0U=");
+    }
+  });
 });
