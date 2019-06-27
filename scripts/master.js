@@ -78,7 +78,7 @@ $(document).ready(function() {
     let scanner = new Instascan.Scanner(opts);
 
     scanner.addListener('scan', function(content) {
-      a = CryptoJS.AES.decrypt(content, "967b81c170f10afbb56a80f7bb9ac1a8");
+      a = CryptoJS.AES.decrypt(content, "ceb6779475f1e6247ea59b6f2de1acb3");
       a = a.toString(CryptoJS.enc.Utf8);
 
 
