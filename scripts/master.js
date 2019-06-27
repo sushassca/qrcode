@@ -61,13 +61,21 @@ $(document).ready(function() {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       $("#mobile").show();
       $("#web").hide();
-
+      let opts = {
+        continuous: true,
+        video: document.getElementById('preview'),
+        mirror: false,
+        captureImage: false,
+        backgroundScan: true,
+        refractoryPeriod: 5000,
+        scanPeriod: 1
+      };
       let scanner = new Instascan.Scanner(opts);
 
       scanner.addListener('scan', function(content) {
 
         // ############################# decrypt with fingerprint
-        a = CryptoJS.AES.decrypt(content, "967b81c170f10afbb56a80f7bb9ac1a8");
+        a = CryptoJS.AES.decrypt(content, result);
         a = a.toString(CryptoJS.enc.Utf8);
         if (a != "") {
           update(1);
