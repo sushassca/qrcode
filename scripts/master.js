@@ -25,9 +25,10 @@ $(document).ready(function() {
     function myRequest() {
       req.onreadystatechange = () => {
         if (req.readyState == XMLHttpRequest.DONE) {
+
+          let data = JSON.parse(req.responseText);
           alert(data.result.request_deviceID)
           mydeviceidAPI = data.result.request_deviceID;
-          let data = JSON.parse(req.responseText);
           if (data.result.request_status == 1) {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
