@@ -10,7 +10,9 @@ $(document).ready(function() {
         if (data.request_status == 1) {
           if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
-            alert("DONE");
+
+          }else {
+              alert("DONE");
           };
           clearInterval(myRequest);
         } else {
