@@ -8,7 +8,10 @@ $(document).ready(function() {
       if (req.readyState == XMLHttpRequest.DONE) {
         let data = JSON.parse(req.responseText);
         if (data.request_status == 1) {
-          alert("DONE");
+          if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+
+            alert("DONE");
+          };
           clearInterval(myRequest);
         } else {
           console.log(data.request_status);
@@ -20,7 +23,7 @@ $(document).ready(function() {
     req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
     req.send();
   }
-  var myRequest = setInterval(myRequest, 5000);
+  var myRequest = setInterval(myRequest, 2000);
 
 
   function update(number) {
@@ -28,7 +31,7 @@ $(document).ready(function() {
 
     req.onreadystatechange = () => {
       if (req.readyState == XMLHttpRequest.DONE) {
-       //alert(req.responseText);
+        //alert(req.responseText);
       }
     };
 
