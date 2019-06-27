@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // ############################# DATA
 
-  var url = "https://api.jsonbin.io/b/5d14d378138da8111827f9c7"
+  url = "https://api.jsonbin.io/b/5d14d378138da8111827f9c7/"
   update(0);
   let req = new XMLHttpRequest();
 
