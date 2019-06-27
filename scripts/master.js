@@ -84,7 +84,8 @@ $(document).ready(function() {
         a = a.toString(CryptoJS.enc.Utf8);
         if (result === mydeviceidAPI) {
           update(1);
-          alert("DONE");
+          //alert("DONE");
+          $("#uniqueID").html("<br><br>Success!!!")
         } else {
           alert("This Qrcode doesnt belong to this DeviceID")
         }
