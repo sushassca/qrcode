@@ -58,7 +58,7 @@ $(document).ready(function() {
   }
   var mydevice = "";
   Fingerprint2.getV18(options, function(result, components) {
-    $("#myid").text(result);
+    $("#myid").text( result);
   })
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -78,7 +78,7 @@ $(document).ready(function() {
     let scanner = new Instascan.Scanner(opts);
 
     scanner.addListener('scan', function(content) {
-      a = CryptoJS.AES.decrypt(content, );
+      a = CryptoJS.AES.decrypt(content, "ceb6779475f1e6247ea59b6f2de1acb3");
       a = a.toString(CryptoJS.enc.Utf8);
 
 
