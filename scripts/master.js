@@ -21,6 +21,7 @@ $(document).ready(function() {
     // ############################# GET data from api to check if has been updated every 5s
     let req = new XMLHttpRequest();
     var mydeviceidAPI = "";
+
     function myRequest() {
       req.onreadystatechange = () => {
         if (req.readyState == XMLHttpRequest.DONE) {
@@ -28,7 +29,7 @@ $(document).ready(function() {
           if (data.request_status == 1) {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
-  mydeviceidAPI = data.request_deviceID;
+              mydeviceidAPI = data.request_deviceID;
             } else {
               alert("DONE");
             };
