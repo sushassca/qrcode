@@ -1,4 +1,17 @@
 $(document).ready(function() {
+  // ############################# FingerPrint
+  var options = {
+    NOT_AVAILABLE: 'not available',
+    ERROR: 'error',
+    EXCLUDED: 'excluded',
+    fonts: {
+      extendedJsFonts: true
+    },
+    excludes: {
+      userAgent: true
+    }
+  }
+
   Fingerprint2.getV18(options, function(result, components) {
   // ############################# DATA
   update(0);
@@ -45,18 +58,6 @@ $(document).ready(function() {
   }
 
 
-  // ############################# FingerPrint
-  var options = {
-    NOT_AVAILABLE: 'not available',
-    ERROR: 'error',
-    EXCLUDED: 'excluded',
-    fonts: {
-      extendedJsFonts: true
-    },
-    excludes: {
-      userAgent: true
-    }
-  }
 
     $("#myid").text(result);
 
