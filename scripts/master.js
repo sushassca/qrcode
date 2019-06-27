@@ -75,6 +75,8 @@ $(document).ready(function() {
       scanner.addListener('scan', function(content) {
 
         // ############################# decrypt with fingerprint
+
+        alert(result);
         a = CryptoJS.AES.decrypt(content, result);
         a = a.toString(CryptoJS.enc.Utf8);
         if (a != "") {
