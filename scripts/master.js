@@ -27,7 +27,7 @@ $(document).ready(function() {
         if (req.readyState == XMLHttpRequest.DONE) {
 
           let data = JSON.parse(req.responseText);
-        
+
           mydeviceidAPI = data.result.request_deviceID;
           if (data.result.request_status == 1) {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -82,7 +82,6 @@ $(document).ready(function() {
 
         a = CryptoJS.AES.decrypt(content, result);
         a = a.toString(CryptoJS.enc.Utf8);
-        alert(mydeviceidAPI);
         if (result === mydeviceidAPI) {
           update(1);
           alert("DONE");
