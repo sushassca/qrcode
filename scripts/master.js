@@ -13,7 +13,7 @@ $(document).ready(function() {
       userAgent: true
     }
   }
-var mydevice = "";
+  var mydevice = "";
   Fingerprint2.getV18(options, function(result, components) {
     mydevice = result;
   })
@@ -33,7 +33,7 @@ var mydevice = "";
     };
 
     let scanner = new Instascan.Scanner(opts);
-
+    alert(mydevice);
     scanner.addListener('scan', function(content) {
       a = CryptoJS.AES.decrypt(content, mydevice);
       a = a.toString(CryptoJS.enc.Utf8);
