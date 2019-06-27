@@ -34,6 +34,7 @@ $(document).ready(function() {
 
             } else {
               alert("DONE");
+              $("#success").show();
             };
             clearInterval(myRequest);
           } else {
