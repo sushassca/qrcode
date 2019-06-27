@@ -1,5 +1,7 @@
 $(document).ready(function() {
   // ############################# DATA
+
+  var url = "https://api.jsonbin.io/b/5d14d378138da8111827f9c7"
   update(0);
   let req = new XMLHttpRequest();
 
@@ -21,7 +23,7 @@ $(document).ready(function() {
 
       }
     };
-    req.open("GET", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab/latest", true);
+    req.open("GET", url+"latest", true);
     req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
     req.send();
   }
@@ -37,7 +39,7 @@ $(document).ready(function() {
       }
     };
 
-    req.open("PUT", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab", true);
+    req.open("PUT", url, true);
     req.setRequestHeader("Content-type", "application/json");
     req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
     req.send('{"request_status": "' + number + '"}');
