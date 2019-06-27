@@ -1,5 +1,6 @@
 $(document).ready(function() {
   // ############################# DATA
+update(0);
   let req = new XMLHttpRequest();
 
   function myRequest() {
@@ -15,12 +16,27 @@ $(document).ready(function() {
 
       }
     };
-    req.open("GET", "https://api.jsonbin.io/b/5d14bd62138da8111827ebc8/1", true);
+    req.open("GET", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab", true);
     req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
     req.send();
   }
   var myRequest = setInterval(myRequest, 5000);
 
+
+function update(number){
+  let req = new XMLHttpRequest();
+
+  req.onreadystatechange = () => {
+    if (req.readyState == XMLHttpRequest.DONE) {
+
+    }
+  };
+
+  req.open("PUT", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab", true);
+  req.setRequestHeader("Content-type", "application/json");
+  req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
+  req.send('{"request_status": '+number+'}');
+}
 
 
   // ############################# FingerPrint
@@ -59,20 +75,11 @@ $(document).ready(function() {
     scanner.addListener('scan', function(content) {
       a = CryptoJS.AES.decrypt(content, "967b81c170f10afbb56a80f7bb9ac1a8");
       a = a.toString(CryptoJS.enc.Utf8);
-      alert(a)
+
 
       if (a != "") {
-        let req = new XMLHttpRequest();
-
-        req.onreadystatechange = () => {
-          if (req.readyState == XMLHttpRequest.DONE) {
-            console.log(req.responseText);
-          }
-        };
-
-        req.open("PUT", "https://api.jsonbin.io/b/5d14bd62138da8111827ebc8/1", true);
-        req.setRequestHeader("Content-type", "application/json");
-        req.send('{"request_status": "1"}');
+        alert(a);
+        update(1);
       }
     });
 
