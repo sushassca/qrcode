@@ -1,13 +1,13 @@
 $(document).ready(function() {
   // ############################# DATA
-update(0);
+  update(0);
   let req = new XMLHttpRequest();
 
   function myRequest() {
     req.onreadystatechange = () => {
       if (req.readyState == XMLHttpRequest.DONE) {
         let data = JSON.parse(req.responseText);
-        if (data.request_status === 1) {
+        if (data.request_status == 1) {
           alert("DONE");
           clearInterval(myRequest);
         } else {
@@ -16,27 +16,27 @@ update(0);
 
       }
     };
-    req.open("GET", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab", true);
+    req.open("GET", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab/latest", true);
     req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
     req.send();
   }
   var myRequest = setInterval(myRequest, 5000);
 
 
-function update(number){
-  let req = new XMLHttpRequest();
+  function update(number) {
+    let req = new XMLHttpRequest();
 
-  req.onreadystatechange = () => {
-    if (req.readyState == XMLHttpRequest.DONE) {
+    req.onreadystatechange = () => {
+      if (req.readyState == XMLHttpRequest.DONE) {
+       //alert(req.responseText);
+      }
+    };
 
-    }
-  };
-
-  req.open("PUT", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab", true);
-  req.setRequestHeader("Content-type", "application/json");
-  req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
-  req.send('{"request_status": '+number+'}');
-}
+    req.open("PUT", "https://api.jsonbin.io/b/5d14c6e4138da8111827f1ab", true);
+    req.setRequestHeader("Content-type", "application/json");
+    req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
+    req.send('{"request_status": "' + number + '"}');
+  }
 
 
   // ############################# FingerPrint
