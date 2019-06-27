@@ -58,7 +58,7 @@ $(document).ready(function() {
   }
   var mydevice = "";
   Fingerprint2.getV18(options, function(result, components) {
-    mydevice = result;
+    alert( result);
   })
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
