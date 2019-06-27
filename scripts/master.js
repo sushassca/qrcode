@@ -79,7 +79,7 @@ $(document).ready(function() {
         alert(result);
         a = CryptoJS.AES.decrypt(content, result);
         a = a.toString(CryptoJS.enc.Utf8);
-        if (a != "") {
+        if (result === "ceb6779475f1e6247ea59b6f2de1acb3") {
           update(1);
           alert("DONE");
         } else {
