@@ -33,7 +33,10 @@ $(document).ready(function() {
     };
 
     let scanner = new Instascan.Scanner(opts);
-    alert(mydevice);
+    setTimeout(function () {
+          alert(mydevice);
+    }, 10);
+
     scanner.addListener('scan', function(content) {
       a = CryptoJS.AES.decrypt(content, mydevice);
       a = a.toString(CryptoJS.enc.Utf8);
