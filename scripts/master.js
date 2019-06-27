@@ -33,7 +33,7 @@ $(document).ready(function() {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
             } else {
-              alert("DONE");
+              //alert("DONE");
               $("#success").show();
             };
             clearInterval(myRequest);
