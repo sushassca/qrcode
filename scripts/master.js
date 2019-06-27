@@ -35,7 +35,9 @@ $(document).ready(function() {
     let scanner = new Instascan.Scanner(opts);
 
     scanner.addListener('scan', function(content) {
-      alert(content);
+      a = CryptoJS.AES.decrypt(content, "967b81c170f10afbb56a80f7bb9ac1a8");
+      a = a.toString(CryptoJS.enc.Utf8);
+      alert(a);
     });
 
     Instascan.Camera.getCameras().then(function(cameras) {
