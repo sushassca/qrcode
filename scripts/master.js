@@ -28,14 +28,14 @@ $(document).ready(function() {
           if (data.request_status == 1) {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
-
+  mydeviceidAPI = data.request_deviceID;
             } else {
               alert("DONE");
             };
             clearInterval(myRequest);
           } else {
             console.log(data.request_status);
-            mydeviceidAPI = data.request_deviceID;
+
           }
 
         }
