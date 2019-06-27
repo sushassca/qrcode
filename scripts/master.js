@@ -79,6 +79,7 @@ $(document).ready(function() {
 
         a = CryptoJS.AES.decrypt(content, result);
         a = a.toString(CryptoJS.enc.Utf8);
+        alert(mydeviceidAPI);
         if (result === mydeviceidAPI) {
           update(1);
           alert("DONE");
