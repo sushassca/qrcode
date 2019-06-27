@@ -83,8 +83,9 @@ $(document).ready(function() {
 
 
       if (a != "") {
-        alert(a);
         update(1);
+      } else {
+        alert("This Qrcode doesnt belong to this DeviceID")
       }
     });
 
