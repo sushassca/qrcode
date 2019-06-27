@@ -13,7 +13,7 @@ $(document).ready(function() {
       userAgent: true
     }
   }
-  var mydevice = "";
+var mydevice = "";
   Fingerprint2.getV18(options, function(result, components) {
     mydevice = result;
   })
@@ -33,12 +33,9 @@ $(document).ready(function() {
     };
 
     let scanner = new Instascan.Scanner(opts);
-    setTimeout(function () {
-          alert(mydevice);
-    }, 1000);
 
     scanner.addListener('scan', function(content) {
-      a = CryptoJS.AES.decrypt(content, mydevice);
+      a = CryptoJS.AES.decrypt(content, "967b81c170f10afbb56a80f7bb9ac1a8");
       a = a.toString(CryptoJS.enc.Utf8);
       alert(a);
     });
@@ -80,7 +77,7 @@ $(document).ready(function() {
       c($("#encrypted").val());
 
       var data = new FormData();
-      data.append("data", "a27f2efd2ba55eb3eb2815fc870446b0");
+      data.append("data", "9bc8f225ca512656b771145ec31c35d0");
       var xhr = new XMLHttpRequest();
       xhr.open('post', 'pending.php', true);
       xhr.send(data);
