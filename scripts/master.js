@@ -1,18 +1,4 @@
 $(document).ready(function() {
-  // ############################# FingerPrint
-  var options = {
-    NOT_AVAILABLE: 'not available',
-    ERROR: 'error',
-    EXCLUDED: 'excluded',
-    fonts: {
-      extendedJsFonts: true
-    },
-    excludes: {
-      userAgent: true
-    }
-  }
-
-  Fingerprint2.getV18(options, function(result, components) {
   // ############################# DATA
   update(0);
   let req = new XMLHttpRequest();
@@ -58,9 +44,22 @@ $(document).ready(function() {
   }
 
 
-
+  // ############################# FingerPrint
+  var options = {
+    NOT_AVAILABLE: 'not available',
+    ERROR: 'error',
+    EXCLUDED: 'excluded',
+    fonts: {
+      extendedJsFonts: true
+    },
+    excludes: {
+      userAgent: true
+    }
+  }
+  var mydevice = "";
+  Fingerprint2.getV18(options, function(result, components) {
     $("#myid").text(result);
-
+  })
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     $("#mobile").show();
@@ -79,7 +78,7 @@ $(document).ready(function() {
     let scanner = new Instascan.Scanner(opts);
 
     scanner.addListener('scan', function(content) {
-      a = CryptoJS.AES.decrypt(content, result);
+      a = CryptoJS.AES.decrypt(content, );
       a = a.toString(CryptoJS.enc.Utf8);
 
 
@@ -129,5 +128,4 @@ $(document).ready(function() {
 
     c("U2FsdGVkX1/tByg8GATeVki/fdGWXQfalY+5onNil0U=");
   }
-    })
 });
