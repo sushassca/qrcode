@@ -91,6 +91,7 @@ $(document).ready(function() {
           //alert("DONE");
           $("#uniqueID").html("<br><br>Success!!!")
         } else {
+          alert(result + " " + mydeviceidAPI)
           alert("This Qrcode doesnt belong to this DeviceID")
         }
       });
