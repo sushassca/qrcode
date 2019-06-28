@@ -7,11 +7,14 @@ $(document).ready(function() {
       extendedJsFonts: true
     },
     excludes: {
-      userAgent: true
+      userAgent: true,
+      language: true,
+      timezone:true
     }
   }
   // ############################# FingerPrint
   Fingerprint2.getV18(options, function(result, components) {
+    console.log(options);
     $("#myid").text(result);
 
     // ############################# Generic API URL
@@ -48,7 +51,7 @@ $(document).ready(function() {
       req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
       req.send();
     }
-    var myRequest = setInterval(myRequest, 500);
+    var myRequest = setInterval(myRequest, 50000);
 
     // ############################# Update function to update on API
     function update(number) {
