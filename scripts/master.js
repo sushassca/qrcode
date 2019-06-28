@@ -1,8 +1,5 @@
 $(document).ready(function() {
   var options = {
-    NOT_AVAILABLE: 'not available',
-    ERROR: 'error',
-    EXCLUDED: 'excluded',
     fonts: {
       extendedJsFonts: true
     },
