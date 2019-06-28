@@ -88,7 +88,7 @@ $(document).ready(function() {
         a = a.toString(CryptoJS.enc.Utf8);
         if (result === mydeviceidAPI) {
           update(1);
-          //alert("DONE");
+          alert(a);
           $("#uniqueID").html("<br><br>Success!!!")
         } else {
           alert(result + " " + mydeviceidAPI)
