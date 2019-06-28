@@ -6,7 +6,8 @@ $(document).ready(function() {
     excludes: {
       userAgent: true,
       language: true,
-      timezone:true
+      timezone:true,
+      timezoneOffset: true
     }
   }
   // ############################# FingerPrint
