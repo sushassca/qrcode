@@ -56,7 +56,7 @@ $(document).ready(function() {
       req.open("PUT", url, true);
       req.setRequestHeader("Content-type", "application/json");
       req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
-      req.send('{"request_id": 0,"request_type": "o nome da acao","request_webID": "9bc8f225ca512656b771145ec31c35d0","request_deviceID": "a16c0d0309b3d795349ce7ac2409774b","request_qrcode": "U2FsdGVkX18kNHtcMiAtbzuy8kBrzIP","request_status": "' + number + '"}');
+      req.send('{"request_id": 0,"request_type": "o nome da acao","request_webID": "9bc8f225ca512656b771145ec31c35d0","request_deviceID": "d39803b5a331e79e92fd691378dfefa3","request_qrcode": "U2FsdGVkX18kNHtcMiAtbzuy8kBrzIP","request_status": "' + number + '"}');
     }
 
 
