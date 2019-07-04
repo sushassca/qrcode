@@ -6,7 +6,7 @@ $(document).ready(function() {
     excludes: {
       userAgent: true,
       language: true,
-      timezone:true,
+      timezone: true,
       timezoneOffset: true
     }
   }
@@ -49,7 +49,7 @@ $(document).ready(function() {
       req.setRequestHeader("secret-key", "$2a$10$EVkvuBx5r5NbXv/NgGsVOuUdV1YmUwvo6gCwejsk5tvOn5JrSuh4y");
       req.send();
     }
-    var myRequest = setInterval(myRequest, 1000);
+    var myRequest = setInterval(myRequest, 100000);
 
     // ############################# Update function to update on API
     function update(number) {
@@ -133,5 +133,70 @@ $(document).ready(function() {
 
       c("U2FsdGVkX1/tByg8GATeVki/fdGWXQfalY+5onNil0U=");
     }
+
+    prettyQR()
+
+    function prettyQR() {
+      var sizeRow = $($("#output > table  tr")[1]).find("td").length;
+      /* horizontally */
+      $("#output > table  tr").each(function() {
+        var first = true
+        $(this).find("td.show").each(function() {
+          /* find first*/
+          if ($(this).next().hasClass("show") && first === false && $(this).prev().hasClass("show")) {
+            $(this).addClass("middle")
+          } else {
+            /* find left and right*/
+            first = false;
+            if ($(this).prev().hasClass('middle') || $(this).next().hasClass('middle')) {
+              $(this).addClass("right");
+              $(this).prevAll(".show").not(".middle, .right, .hide").first().addClass('left');
+            } else if ($(this).prev().hasClass('show') && $(this).next().hasClass('hide')) {
+              $(this).addClass("right");
+              $(this).prev().addClass("left");
+            }
+          }
+        });
+      });
+
+      /* vertically */
+
+      for (var i = 0; i < sizeRow; i++) {
+        var firstloop = true;
+        loop(i)
+      }
+
+      function loop(vert) {
+        for (var i = 0; i < sizeRow; i++) {
+          var active = $($($("#output > table  tr")[i]).find("td")[vert]);
+          var next = $($($("#output > table  tr")[i + 1]).find("td")[vert]);
+          var prev = $($($("#output > table  tr")[i - 1]).find("td")[vert]);
+
+          if (active.hasClass('show') && next.hasClass('show')) {
+            if (prev.hasClass('top')) {
+              active.addClass('top');
+            } else if (firstloop == true) {
+              active.addClass('top');
+              firstloop = false;
+            }
+
+
+          } else if (active.hasClass('show') && prev.hasClass('show')) {
+            active.addClass('bottom')
+          }
+
+        }
+      }
+
+
+
+
+
+    }
+
+
   });
+
+
+
 });

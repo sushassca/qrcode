@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #output {
   width: 256px;
   height: auto;
@@ -7,7 +11,7 @@
 
 #output table {
   /*background-image: radial-gradient(circle, #1d19ff, #620fec, #7f0eda) !important;*/
-  background-color: #1d19ff !important;
+  background-color: white !important;
 }
 
 #text {
@@ -32,11 +36,11 @@
 }
 
 #output #logo {
-  width: 49px;
-  height: 49px;
+  width: 48px;
+  height: 48px;
   position: absolute;
-  left: calc(50% - 26px);
-  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  top: calc(50% - 23px);
   background-image: url(../img/logo.svg);
   background-position: center;
   box-sizing: border-box;
@@ -46,11 +50,17 @@
   background-color: white;
 }
 
+/*
 .show {
   background-image: url(../img/show.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+*/
+.show {
+  background-color: #1d19ff;
+  border-radius: 50%;
 }
 
 .hide {
@@ -69,6 +79,8 @@
 
 td {
   border-collapse: collapse;
+  box-sizing: border-box;
+  transition: 2s;
 }
 
 .eye1, .eye2, .eye3, .eye4 {
@@ -140,7 +152,7 @@ td {
   z-index: 999;
 }
 
-#success h1{
+#success h1 {
   font-family: 'Roboto', sans-serif;
   text-align: center;
   color: white;
@@ -152,4 +164,45 @@ td {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 100px;
+}
+
+/* beauty */
+.middle {
+  border-radius: 0 !important;
+}
+
+.right {
+  border-radius: 0 5px 5px 0;
+}
+
+.left {
+  border-radius: 5px 0 0 5px;
+}
+
+.top {
+  border-radius: 0;
+}
+
+.bottom {
+  border-radius: 0;
+}
+
+.left.top {
+  border-radius: 5px 0px 0px 0px;
+  background-color: red;
+}
+
+.left.bottom {
+  border-radius: 0px 0px 0px 5px;
+  background-color: orange;
+}
+
+.right.top {
+  border-radius: 0px 5px 0px 0px;
+  background-color: orangered;
+}
+
+.right.bottom {
+  border-radius: 0px 0px 5px 0px;
+  background-color: yellow;
 }
