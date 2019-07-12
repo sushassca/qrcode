@@ -86,15 +86,16 @@ $(document).ready(function() {
 
         a = CryptoJS.AES.decrypt(content, "ALEX");
         a = a.toString(CryptoJS.enc.Utf8);
-        if (result === mydeviceidAPI) {
-          update(1);
-          alert(a);
-          $("#uniqueID").html("<br><br>Success!!!")
-        } else {
-          alert(" STRING " + content);
-          //alert(result + " " + mydeviceidAPI)
-          //alert("This Qrcode doesnt belong to this DeviceID")
-        }
+        alert(a)
+        // if (result === mydeviceidAPI) {
+        //   update(1);
+        //   alert(a);
+        //   $("#uniqueID").html("<br><br>Success!!!")
+        // } else {
+        //   alert(" STRING " + content);
+        //   //alert(result + " " + mydeviceidAPI)
+        //   //alert("This Qrcode doesnt belong to this DeviceID")
+        // }
       });
 
       Instascan.Camera.getCameras().then(function(cameras) {
