@@ -85,11 +85,11 @@ $(document).ready(function() {
         // ############################# decrypt with fingerprint
 
         a = CryptoJS.AES.decrypt(content, "0000");
-        a = a.toString(CryptoJS.enc.Utf8);
+
         if (a != "") {
-          alert(a)
+          alert(a.toString(CryptoJS.enc.Utf8))
         } else {
-          alert("THIS DEVICE IS NOT LINKED TO THIS ACCOUNT")
+          alert("THIS DEVICE IS NOT LINKED TO THIS ACCOUNT => " + a)
         }
 
         // if (result === mydeviceidAPI) {
