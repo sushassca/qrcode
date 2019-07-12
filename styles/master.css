@@ -25,7 +25,7 @@
 
 #uniqueID {
   margin-top: 50px;
-  color: #3c14f6;
+  color: white;
   font-family: monospace;
   font-weight: bold;
   font-size: 45px;
@@ -125,10 +125,10 @@ td {
 }
 
 #overlay {
-  border-top: 400px solid white;
-  border-bottom: 200px solid white;
-  border-left: 100px solid white;
-  border-right: 100px solid white;
+  border-top: 25vh solid black;
+  border-bottom: 25vh solid black;
+  border-left: 25vw solid black;
+  border-right: 25vw solid black;
   position: absolute;
   top: 0;
   left: 0;
