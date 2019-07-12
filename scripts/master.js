@@ -89,7 +89,7 @@ $(document).ready(function() {
         if (a != "") {
           alert(a.toString(CryptoJS.enc.Utf8))
         } else {
-          alert("THIS DEVICE IS NOT LINKED TO THIS ACCOUNT => " + a)
+          alert("THIS DEVICE IS NOT LINKED TO THIS ACCOUNT => " + content)
         }
 
         // if (result === mydeviceidAPI) {
