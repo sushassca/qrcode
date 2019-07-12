@@ -13,7 +13,7 @@ $(document).ready(function() {
   // ############################# FingerPrint
   Fingerprint2.getV18(options, function(result, components) {
     console.log(options);
-    $("#myid").text(result);
+    $("#myid").text("0000");
 
     // ############################# Generic API URL
     url = "https://www.jsonstore.io/92995f0b27342cdc1f6be60f928bedb6d776905c17b995f06527de722cedcca5"
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
         // ############################# decrypt with fingerprint
 
-        a = CryptoJS.AES.decrypt(content, "ALEX");
+        a = CryptoJS.AES.decrypt(content, "0000");
         a = a.toString(CryptoJS.enc.Utf8);
         alert(a)
         // if (result === mydeviceidAPI) {
