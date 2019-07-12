@@ -86,7 +86,12 @@ $(document).ready(function() {
 
         a = CryptoJS.AES.decrypt(content, "0000");
         a = a.toString(CryptoJS.enc.Utf8);
-        alert(a)
+        if (a != "") {
+          alert(a)
+        } else {
+          alert("THIS DEVICE IS NOT LINKED TO THIS ACCOUNT")
+        }
+
         // if (result === mydeviceidAPI) {
         //   update(1);
         //   alert(a);
