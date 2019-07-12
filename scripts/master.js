@@ -84,7 +84,7 @@ $(document).ready(function() {
 
         // ############################# decrypt with fingerprint
 
-        a = CryptoJS.AES.decrypt(content, result);
+        a = CryptoJS.AES.decrypt(content, "ALEX");
         a = a.toString(CryptoJS.enc.Utf8);
         if (result === mydeviceidAPI) {
           update(1);
