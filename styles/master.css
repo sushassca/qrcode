@@ -125,8 +125,8 @@ td {
 }
 
 #overlay {
-  border-top: 25vh solid black;
-  border-bottom: 25vh solid black;
+  border-top: 30vh solid black;
+  border-bottom: 20vh solid black;
   border-left: 17.5vw solid black;
   border-right: 17.5vw solid black;
   position: absolute;
